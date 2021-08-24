@@ -29,11 +29,13 @@
 					
 					<nav class="main_nav">
 						<ul>
-							<li><a href="">Nutricion</a></li>
-							<li><a href="">Belleza</a></li>
+							{% for categoria in categorias %}
+								<li><a href="">{{ categoria.name }}</a></li>
+							{% endfor %}
+							<!-- <li><a href="">Belleza</a></li>
 							<li><a href="">Hogar</a></li>
 							<li><a href="">Cuidado personal</a></li>
-							<li><a href="">Otros</a></li>
+							<li><a href="">Otros</a></li> -->
 						</ul>
 					</nav>
 					<div class="header_content ml-auto">

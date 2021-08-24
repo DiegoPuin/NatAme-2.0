@@ -43,3 +43,10 @@ class connect():
         cursor = self.conexion.cursor()
         cursor.execute(sentencia)
         cursor.close()
+
+    def sentenciaPreparada(self, sentencia, datos):
+        cursor = self.conexion.cursor()
+        cursor.execute(sentencia,(datos,))
+        salida = cursor.fetchall()
+        cursor.close
+        return salida

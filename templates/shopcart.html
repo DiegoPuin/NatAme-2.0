@@ -19,7 +19,7 @@
 			<div class="header_inner d-flex flex-row align-items-center justify-content-start">
 				<div class="logo">
 					<a href="../home">NatAmE</a>
-					<div class="logo_reggion">Region Andina</div>
+					<div class="logo_reggion">{{Region}}</div>
 				</div>
 				
 				<nav class="main_nav">
@@ -131,7 +131,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
-							<div class="cart_bar_title_name">Producto</div>
+							<div class="cart_bar_title_name">Producto </div>
 							<div class="cart_bar_title_content ml-auto">
 								<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_bar_title_price">Precio</div>
@@ -143,6 +143,8 @@
 						</div>
 					</div>
 				</div>
+
+				{% if categoria %}{% for item in categoria %}
 				<div class="row">
 					<div class="col">
 						<div class="cart_products">
@@ -151,7 +153,9 @@
 									<!-- Product Image -->
 									<div class="cart_product_image"><img src="../static/images/cart_product_1.jpg" alt=""></div>
 									<!-- Product Name -->
-									<div class="cart_product_name"><a href="../product">2 Piece Swimsuit</a></div>
+									
+									  
+									<div class="cart_product_name"><a href="../product">{{ item }}</a></div>
 									<div class="cart_product_info ml-auto">
 										<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
 											<!-- Product Price -->
@@ -178,11 +182,15 @@
 											</div>
 										</div>
 									</div>
+									
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
+				{% endfor %} {% endif %}
+
+
 				<div class="row">
 					<div class="col">
 						<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
