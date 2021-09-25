@@ -1,0 +1,11 @@
+--Tablespace
+create tablespace natamedef DATAFILE 'C:\oraclexe\app\oracle\oradata\XE\natamedef.dbf' SIZE 3m AUTOEXTEND ON;
+--temp tablespace
+CREATE TEMPORARY TABLESPACE natametmp TEMPFILE 'C:\oraclexe\app\oracle\oradata\XE\natameTMP.DBF' SIZE 2M AUTOEXTEND ON;
+--user
+CREATE USER NATAME IDENTIFIED BY 1234 DEFAULT TABLESPACE NATAMEDEF TEMPORARY TABLESPACE NATAMETMP QUOTA 2M ON NATAMEDEF PASSWORD EXPIRE;
+connect natame/1234
+connect system/1234
+grant connect, resource to natame;
+connect natame/1234
+

@@ -35,19 +35,19 @@
 @font-face
 {
 	font-family: 'Lucida';
-	src: url('fonts/lucida_bright_regular.ttf')  format('truetype');
+	src: url('../static/fonts/lucida_bright_regular.ttf')  format('truetype');
 }
 @font-face
 {
 	font-family: 'Lucida';
-	src: url('fonts/lucida_bright_demi.ttf')  format('truetype');
+	src: url('../static/fonts/lucida_bright_demi.ttf')  format('truetype');
 	font-weight: 700;
 }
 @font-face
 {
 	font-family: 'Beyond';
-	src: url('fonts/beyond_the_mountains.otf')  format('opentype'),
-		 url('fonts/beyond_the_mountains.ttf')  format('truetype');
+	src: url('../static/fonts/beyond_the_mountains.otf')  format('opentype'),
+		 url('../static/fonts/beyond_the_mountains.ttf')  format('truetype');
 }
 
 /*********************************
@@ -482,6 +482,11 @@ section
 	height: 20px;
 }
 .cart img
+{
+	width: 20px;
+	height: 20px;
+}
+.register img
 {
 	width: 20px;
 	height: 20px;

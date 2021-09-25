@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block head %}
 	<title>Inicio</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,99 +11,11 @@
 	<link rel="stylesheet" type="text/css" href="../static/plugins/colorbox/colorbox.css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home_responsive.css') }}">
-</head>
-<body>
+{% endblock %}
 
-	<div class="super_container">
-
-		<!-- Header -->
-		<header class="header">
-
-			<div class="header_inner d-flex flex-row align-items-center justify-content-start">
-			
-				<div class="logo">
-					<a href="#">NatAmE</a>
-					<div class="logo_reggion">Region Andina</div>
-				</div>
-				
-				<nav class="main_nav">
-					<ul>
-						<li><a href="../categories">{{ categoria1 }}</a></li>
-						<li><a href="../categories">Comprar</a></li>
-						<li><a href="../categories">Hogar</a></li>
-						<li><a href="../categories">Cuidado personal</a></li>
-						<li><a href="../categories">Otros</a></li>
-					</ul>
-				</nav>
-
-				<div class="header_content ml-auto">
-					<div class="search header_search">
-						<form action="#">
-							<input type="search" class="search_input" required="required">
-							<button type="submit" id="search_button" class="search_button"><img src="../static/images/magnifying-glass.svg" alt=""></button>
-						</form>
-					</div>
-
-					<div class="shopping">	
-					<!-- Cart -->
-						<a href="../shopcart">
-							<div class="cart">
-								<img src="../static/images/shopping-cart.svg" alt="">
-								<div class="cart_num_container">
-									<div class="cart_num_inner">
-										<div class="cart_num">0</div>
-									</div>
-								</div>
-							</div>
-						</a>
-					<!-- Bag -->
-						<a href="../shopbag">
-							<div class="bag">
-								<img src="../static/images/shopping-bag.svg" alt="">
-								<div class="bag_num_container">
-									<div class="bag_num_inner">
-										<div class="bag_num">0</div>
-									</div>
-								</div>
-							</div>
-						</a>
-					<!-- Avatar -->
-						<a href="../login">
-							<div class="avatar">
-								<img src="../static/images/avatar.svg" alt="">
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
-			</div>
-		</header>
-
-		<!-- Menu -->
-
-		<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-			<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-			<div class="logo menu_mm"><a href="">NatAmE</a></div>
-			<div class="search">
-				<form action="#">
-					<input type="search" class="search_input menu_mm" required="required">
-					<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="../static/images/magnifying-glass.svg" alt=""></button>
-				</form>
-			</div>
-			<nav class="menu_nav">
-				<ul class="menu_mm">
-					<li class="menu_mm"><a href="#">Region Caribe</a></li>
-					<li class="menu_mm"><a href="#">Region Pacifica</a></li>
-					<li class="menu_mm"><a href="#">Region Andina</a></li>
-					<li class="menu_mm"><a href="#">Region Orinoquia</a></li>
-					<li class="menu_mm"><a href="#">Region Amazonica</a></li>
-				</ul>
-			</nav>
-		</div>
+		{% block content %}
 
 		<!-- Home -->
-
 		<div class="home">
 			
 			<!-- Home Slider -->
@@ -334,8 +245,9 @@
 				</div>
 			</div>
 		</div>
+		{% endblock %}
 
-	</div>
+	{% block jscripst %}
 	<script src="../static/js/jquery-3.2.1.min.js"></script>
 	<script src="../static/bootstrap4/popper.js"></script>
 	<script src="../static/bootstrap4/bootstrap.min.js"></script>
@@ -344,5 +256,4 @@
 	<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="../static/plugins/colorbox/jquery.colorbox-min.js"></script>
 	<script src="../static/js/custom.js"></script>
-</body>
-</html>
+	{% endblock %}

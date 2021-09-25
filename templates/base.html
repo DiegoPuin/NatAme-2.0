@@ -1,89 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Inicio</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="../static/bootstrap4/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/bootstrap4/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/animate.css">
-	<link rel="stylesheet" type="text/css" href="../static/plugins/colorbox/colorbox.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/colorbox/colorbox.css"> 
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home_responsive.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home_responsive.css') }}">-->
 	{% block head %}
-    {% endblock %}
+	{% endblock %}
 </head>
 <body>
 
     <div class="super_container">
-
+		
 		<!-- Header -->
-		<div class="logo">
-			<a href="#">NatAmE</a>
-			<div class="logo_reggion">Region Andina</div>
-		</div>
-		
-		<nav class="main_nav">
-			<ul>
-				<li><a href="../categories">{{ categoria1 }}</a></li>
-				<li><a href="../categories">Comprar</a></li>
-				<li><a href="../categories">Hogar</a></li>
-				<li><a href="../categories">Cuidado personal</a></li>
-				<li><a href="../categories">Otros</a></li>
-			</ul>
-		</nav>
 
-		<div class="header_content ml-auto">
-			<div class="search header_search">
-				<form action="#">
-					<input type="search" class="search_input" required="required">
-					<button type="submit" id="search_button" class="search_button"><img src="../static/images/magnifying-glass.svg" alt=""></button>
-				</form>
-			</div>
-
-			<div class="shopping">	
-			<!-- Cart -->
-				<a href="../shopcart">
-					<div class="cart">
-						<img src="../static/images/shopping-cart.svg" alt="">
-						<div class="cart_num_container">
-							<div class="cart_num_inner">
-								<div class="cart_num">0</div>
+		<header class="header">
+			<div class="header_inner d-flex flex-row align-items-center justify-content-start">
+				<div class="logo">
+					<a href="../home">NatAmE</a>
+					<div class="logo_reggion">Region Andina</div>
+				</div>
+				
+				<nav class="main_nav">
+					<ul>
+						<li><a href="../categories">Nutricion</a></li>
+						<li><a href="../categories">Belleza</a></li>
+						<li><a href="../categories">Hogar</a></li>
+						<li><a href="../categories">Cuidado personal</a></li>
+						<li><a href="../categories">Otros</a></li>
+					</ul>
+				</nav>
+				<div class="header_content ml-auto">
+					<!-- <div class="search header_search">
+						<form action="">
+							<input type="search" class="search_input" required="required">
+							<button type="submit" id="search_button" class="search_button"><img src="../static/images/magnifying-glass.svg" alt=""></button>
+						</form>
+					</div> -->
+					<div class="shopping">
+						<!-- Cart -->
+						<a href="../shopcart">
+							<div class="cart">
+								<img src="../static/images/shopping-cart.svg" alt="">
+								<div class="cart_num_container">
+									<div class="cart_num_inner">
+										<div class="cart_num">0</div>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</a>
-			<!-- Bag -->
-				<a href="../shopbag">
-					<div class="bag">
-						<img src="../static/images/shopping-bag.svg" alt="">
-						<div class="bag_num_container">
-							<div class="bag_num_inner">
-								<div class="bag_num">0</div>
+						</a>
+						<!-- Bag -->
+						<a href="../shopbag">
+							<div class="bag">
+								<img src="../static/images/shopping-bag.svg" alt="">
+								<div class="bag_num_container">
+									<div class="bag_num_inner">
+										<div class="bag_num">0</div>
+									</div>
+								</div>
 							</div>
-						</div>
+						</a>
+						<!-- Avatar -->
+						<a href="../login">
+							<div class="avatar">
+								<img src="../static/images/avatar.svg" alt="">
+							</div>
+						</a>
+						<!-- Register -->
+						<a href="../register">
+							<div class="register">
+								<img src="../static/images/list.svg" alt="">
+							</div>
+						</a>
 					</div>
-				</a>
-			<!-- Avatar -->
-				<a href="../login">
-					<div class="avatar">
-						<img src="../static/images/avatar.svg" alt="">
-					</div>
-				</a>
-			</div>
-		</div>
+				</div>
 
-		<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
-	</div>
-</header>
-		
+				<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+			</div>
+		</header>
+
 		<!-- Menu -->
 
 		<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 			<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-			<div class="logo menu_mm"><a href="">NatAmE</a></div>
+			<div class="logo menu_mm"><a href="../home">NatAmE</a></div>
 			<div class="search">
 				<form action="#">
 					<input type="search" class="search_input menu_mm" required="required">
@@ -92,22 +96,20 @@
 			</div>
 			<nav class="menu_nav">
 				<ul class="menu_mm">
-					<li class="menu_mm"><a href="#">Region Caribe</a></li>
-					<li class="menu_mm"><a href="#">Region Pacifica</a></li>
-					<li class="menu_mm"><a href="#">Region Andina</a></li>
-					<li class="menu_mm"><a href="#">Region Orinoquia</a></li>
-					<li class="menu_mm"><a href="#">Region Amazonica</a></li>
+					<li class="menu_mm"><a href="">Region Caribe</a></li>
+					<li class="menu_mm"><a href="">Region Pacifica</a></li>
+					<li class="menu_mm"><a href="">Region Andina</a></li>
+					<li class="menu_mm"><a href="">Region Orinoquia</a></li>
+					<li class="menu_mm"><a href="">Region Amazonica</a></li>
 				</ul>
 			</nav>
 		</div>
 
-        <div class="hero-body">
-            <div>
-               {% block content %}
-               {% endblock %}
-            </div>
-        </div>
-    </section>
-</body>
+		{% block content %}
+        {% endblock %}
+    </div>
 
+	{% block jscripst %}
+	{% endblock %}
+</body>
 </html>

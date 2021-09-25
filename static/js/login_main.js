@@ -51,7 +51,10 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
 
+    /* $('.login100-form-btn').on('click', function(){
+        var user = $(document.getElementsByName('username')).val().;
+        var passw = $(document.getElementsByName('password')).val();
+        $(document.getElementsByName("url_redirect")).setAttribute("href", "/login/" + user + "-" + passw);
+    }); */
 })(jQuery);

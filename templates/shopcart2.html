@@ -10,8 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cart_responsive.css') }}">
 	{% endblock %}
 </head>
-
 {% block content %}
+
 <form method="POST" id="Shopcar">
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../static/images/cart.jpg" data-speed="0.8"></div>
@@ -33,12 +33,11 @@
             </div>
         </div>
     </div>
-
     <div class="cart_container ">
         <div class="container ">
             <div class="row ">
                 <div class="col ">
-                    <div class="cart_title ">Productos en el carro</div>
+                    <div class="cart_title ">Productos en el carro 2</div>
                 </div>
             </div>
             <div class="row ">
@@ -49,6 +48,7 @@
                             <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
                                 <div class="cart_bar_title_price ">Precio</div>
                                 <div class="cart_bar_title_quantity ">Cantidad</div>
+                                <div class="cart_bar_title_total ">Total</div>
                                 <div class="cart_bar_title_button "></div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            {% if products%}{% for item in products.data %}
+            {% if longitud_1%}{% for item in longitud_1 %}
             <div class="row ">
                 <div class="col ">
                     <div class="cart_products ">
@@ -67,20 +67,20 @@
                                 <!-- Product Name -->
 
 
-                                <div class="cart_product_name "><a href="../product ">{{ item.name }}</a></div>
+                                <div class="cart_product_name "><a href="../product ">{{ categoria_1['nombre'][item]}}</a></div>
                                 <div class="cart_product_info ml-auto ">
                                     <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
                                         <!-- Product Price -->
-                                        <div class="cart_product_price ">{{ item.price }}</div>
+                                        <div class="cart_product_price ">{{ categoria_1['precio'][item]}}</div>
                                         <!-- Product Quantity -->
                                         <div class="product_quantity_container ">
                                             <div class="product_quantity clearfix ">
-                                                <input id=" " type="text " name="{{ item.id }}" value="0">
+                                                <input id=" " type="text " name="{{categoria_1['id'][item]}}" value="{{compra['cantidad'][item]}}">
 
                                             </div>
                                         </div>
                                         <!-- Products Total Price -->
-
+                                        <div class="cart_product_total ">{{ categoria_1['total'][item]}}</div>
                                         <!-- Product Cart Trash Button -->
                                         <div class="cart_product_button ">
                                             <button class="cart_product_remove ">
@@ -103,8 +103,6 @@
             <div class="row ">
                 <div class="col ">
                     <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start ">
-                        <button class="button_clear cart_button ">Limpiar carro</button>
-                        <button a href="../shopcart2 " class="button_update cart_button " type="submit " value="Buscar">Cotizar</button>
                         <button class="button_update cart_button_2 ml-md-auto ">Continuar compra</button>
                     </div>
                 </div>
@@ -151,11 +149,11 @@
 
 {% endblock %}
 
-	{% block jscripst %}
+{% block jscripst %}
 	<script src="../static/js/jquery-3.2.1.min.js"></script>
 	<script src="../static/bootstrap4/popper.js"></script>
 	<script src="../static/bootstrap4/bootstrap.min.js"></script>
 	<script src="../static/plugins/easing/easing.js"></script>
 	<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="../static/js/cart_custom.js"></script>
-	{% endblock %}
+{% endblock %}

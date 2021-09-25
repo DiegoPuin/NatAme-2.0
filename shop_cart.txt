@@ -1,0 +1,1 @@
+{"message": "SUCCESFULL", "data": [{"id": 35, "name": "Nautica", "price": 80000.0}], "errors": [], "metadata": []}

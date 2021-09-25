@@ -1,4 +1,4 @@
-from http import HTTPStatus
+""" from http import HTTPStatus
 from flask_login import UserMixin
 from flask import Blueprint, Response, request, render_template, url_for
 from connect_db import connect 
@@ -11,9 +11,10 @@ def load_user(usuario):
 
 def get_user(usuario):
     conn = connect()
-    query = """select * from usuario where N_USUARIO = (:1)"""
+    query = select * from usuario where N_USUARIO = (:1)
     username = usuario
     datos_de_usuario = conn.sentenciaPreparada(query,username)
+    conn.close()
     if len(datos_de_usuario)>0:
         result = User(datos_de_usuario[0])
         return result
@@ -54,4 +55,4 @@ class User(UserMixin):
         return self.N_CONTRASENA == password
 
     def __repr__(self):
-        return '<User {}>'.format(self.N_USUARIO)
+        return '<User {}>'.format(self.N_USUARIO) """

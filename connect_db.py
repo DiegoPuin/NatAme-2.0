@@ -15,21 +15,17 @@ class connect():
         except Exception as err:
             print("Error connecting: cx_Oracle.init_oracle_client()")
             print(err)
-        else:
-            print("Libreria cargada exitosamente")
 
         try:
             self.conexion = cx_Oracle.connect(user, passw, host+"/"+tsname)
         except Exception as error:
             print("No se pudo conectar a la base de datos. Error: ")
-        else:
-            print("Conexion Establecida!!!")
-    
+
     def sentenciaCompuesta(self, sentencia):
         cursor = self.conexion.cursor()
         cursor.execute(sentencia)
         datos = cursor.fetchall()
-        cursor.close
+        cursor.close()
         return datos
 
     def close(self):
@@ -48,5 +44,5 @@ class connect():
         cursor = self.conexion.cursor()
         cursor.execute(sentencia,(datos,))
         salida = cursor.fetchall()
-        cursor.close
+        cursor.close()
         return salida
