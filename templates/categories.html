@@ -1,29 +1,30 @@
 {% extends "base.html" %}
+
 <head>
-	{% block head %}
-	<title>Categorias</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="../static/bootstrap4/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../static/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css">
-	<link rel="stylesheet" type="text/css" href="../static/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='categories.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='categories_responsive.css') }}"">
+    {% block head %}
+    <title>Categorias</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='categories.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='categories_responsive.css') }}" ">
 	{% endblock %}
 </head>
 	
 		{% block content %}	
 		<!-- Home -->
 
-		<div class="home">
-			<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../static/images/categories.jpg" data-speed="0.8"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="home_container">
-							<div class="home_content">
-								<div class="home_title">Categorias</div>
+		<div class="home ">
+			<div class="home_background parallax-window " data-parallax="scroll " data-image-src="../static/images/categories.jpg " data-speed="0.8 "></div>
+			<div class="container ">
+				<div class="row ">
+					<div class="col ">
+						<div class="home_container ">
+							<div class="home_content ">
+								<div class="home_title ">Categorias</div>
 							</div>
 						</div>
 					</div>
@@ -33,68 +34,68 @@
 
 		<!-- Products -->
 
-		<div class="products">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
+		<div class="products ">
+			<div class="container ">
+				<div class="row ">
+					<div class="col-12 ">
 						
 						<!-- Sidebar Left -->
 
-						<div class="sidebar_left clearfix">
+						<div class="sidebar_left clearfix ">
 
 							<!-- Categories -->
-							<div class="sidebar_section">
-								<div class="sidebar_title">Top Categorias</div>
-								<div class="sidebar_section_content">
+							<div class="sidebar_section ">
+								<div class="sidebar_title ">Top Categorias</div>
+								<div class="sidebar_section_content ">
 									<ul>
-										<li><a href="">Nutricion</a></li>
-										<li><a href="">Belleza</a></li>
-										<li><a href="">Hogar</a></li>
-										<li><a href="">Cuidado personal</a></li>
+										<li><a href=" ">Nutricion</a></li>
+										<li><a href=" ">Belleza</a></li>
+										<li><a href=" ">Hogar</a></li>
+										<li><a href=" ">Cuidado personal</a></li>
 									</ul>
 								</div>
 							</div>
 							
 							<!-- Color -->
-							<div class="sidebar_section">
-								<div class="sidebar_title">Todas las categorias</div>
-								<div class="sidebar_section_content sidebar_color_content mCustomScrollbar" data-mcs-theme="minimal-dark">
+							<div class="sidebar_section ">
+								<div class="sidebar_title ">Todas las categorias</div>
+								<div class="sidebar_section_content sidebar_color_content mCustomScrollbar " data-mcs-theme="minimal-dark ">
 									<ul>
 										{% for categoria in products.categories %}
-										<li><a href="/categories/{{categoria.name}}">{{ categoria.name }}</a></li>
+										<li><a href="/categories/{{categoria.name}} ">{{ categoria.name }}</a></li>
 										{% endfor %}
 									</ul>
 								</div>
 							</div>
 						</div>
 
-						<div class="current_page">Nutricion</div>
+						<div class="current_page ">Nutricion</div>
 					</div>
-					<div class="col-12">
-						<div class="product_sorting clearfix">
-							<div class="view">
-								<div class="view_box box_view"><i class="fa fa-th-large" aria-hidden="true"></i></div>
-								<div class="view_box detail_view"><i class="fa fa-bars" aria-hidden="true"></i></div>
+					<div class="col-12 ">
+						<div class="product_sorting clearfix ">
+							<div class="view ">
+								<div class="view_box box_view "><i class="fa fa-th-large " aria-hidden="true "></i></div>
+								<div class="view_box detail_view "><i class="fa fa-bars " aria-hidden="true "></i></div>
 							</div>
-							<div class="sorting">
-								<ul class="item_sorting">
+							<div class="sorting ">
+								<ul class="item_sorting ">
 									<li>
-										<span class="sorting_text">Ver todo</span>
-										<i class="fa fa-caret-down" aria-hidden="true"></i>
+										<span class="sorting_text ">Ver todo</span>
+										<i class="fa fa-caret-down " aria-hidden="true "></i>
 										<ul>
-											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Ver todo</span></li>
-											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Precio</span></li>
-											<!-- <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Stars</span></li> -->
+											<li class="product_sorting_btn " data-isotope-option='{ "sortBy ": "original-order " }'><span>Ver todo</span></li>
+											<li class="product_sorting_btn " data-isotope-option='{ "sortBy ": "price " }'><span>Precio</span></li>
+											<!-- <li class="product_sorting_btn " data-isotope-option='{ "sortBy ": "stars " }'><span>Stars</span></li> -->
 										</ul>
 									</li>
 									<li>
-										<span class="sorting_text">Ver</span>
-										<span class="num_sorting_text">12</span>
-										<i class="fa fa-caret-down" aria-hidden="true"></i>
+										<span class="sorting_text ">Ver</span>
+										<span class="num_sorting_text ">12</span>
+										<i class="fa fa-caret-down " aria-hidden="true "></i>
 										<ul>
-											<li class="num_sorting_btn"><span>3</span></li>
-											<li class="num_sorting_btn"><span>6</span></li>
-											<li class="num_sorting_btn"><span>12</span></li>
+											<li class="num_sorting_btn "><span>3</span></li>
+											<li class="num_sorting_btn "><span>6</span></li>
+											<li class="num_sorting_btn "><span>12</span></li>
 										</ul>
 									</li>
 								</ul>
@@ -103,29 +104,29 @@
 					</div>
 				</div>
 
-				<div class="row products_container">
-					<div class="col">
+				<div class="row products_container ">
+					<div class="col ">
 						
 						<!-- Products -->
 
-						<div class="product_grid">
+						<div class="product_grid ">
 
 							<!-- Product -->
 							{% for product in products.data %}
-							<div class="product">
-								<div class="product_image"><img src="../static/images/product_1.jpg" alt=""></div>
-								<div class="product_content clearfix">
-									<div class="product_info">
-										<div class="product_name"><a href="../products/get-product-{{product.id}}">{{ product.name }}</a></div>
-										<div class="product_price">${{ product.price }}</div>
+							<div class="product ">
+								<div class="product_image "><img src="../static/images/product_1.jpg " alt=" "></div>
+								<div class="product_content clearfix ">
+									<div class="product_info ">
+										<div class="product_name "><a href="../products/get-product-{{product.id}} ">{{ product.name }}</a></div>
+										<div class="product_price ">${{ product.price }}</div>
 									</div>
-									<div class="product_options">
-										<div class="product_buy product_option">
-											<a href="../shopcart/add-product-by-id-{{product.id}}">
-												<img src="../static/images/shopping-cart.svg" alt="">
+									<div class="product_options ">
+										<div class="product_buy product_option ">
+											<!--<a href="../shopcart/add-product-by-id-{{product.id}} ">
+												<img src="../static/images/shopping-cart.svg " alt=" ">-->
 											</a>
 										</div>
-										<!-- <div class="product_fav product_option">+</div> -->
+										<!-- <div class="product_fav product_option ">+</div> -->
 									</div>
 								</div>
 							</div>
@@ -134,14 +135,14 @@
 					</div>	
 				</div>
 
-				<div class="row page_num_container">
-					<div class="col text-right">
-						<ul class="page_nums">
-							<li class="active"><a href="#">01</a></li>
-							<li><a href="#">02</a></li>
-							<li><a href="#">03</a></li>
-							<li><a href="#">04</a></li>
-							<li><a href="#">05</a></li>
+				<div class="row page_num_container ">
+					<div class="col text-right ">
+						<ul class="page_nums ">
+							<li class="active "><a href="# ">01</a></li>
+							<li><a href="# ">02</a></li>
+							<li><a href="# ">03</a></li>
+							<li><a href="# ">04</a></li>
+							<li><a href="# ">05</a></li>
 						</ul>
 					</div>
 				</div>
@@ -150,13 +151,13 @@
 		{% endblock %}
 
 	{% block jscripst %}
-	<script src="../static/js/jquery-3.2.1.min.js"></script>
-	<script src="../static/bootstrap4/popper.js"></script>
-	<script src="../static/bootstrap4/bootstrap.min.js"></script>
-	<script src="../static/plugins/easing/easing.js"></script>
-	<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
-	<script src="../static/plugins/Isotope/isotope.pkgd.min.js"></script>
-	<script src="../static/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
-	<script src="../static/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="../static/js/categories_custom.js"></script>
+	<script src="../static/js/jquery-3.2.1.min.js "></script>
+	<script src="../static/bootstrap4/popper.js "></script>
+	<script src="../static/bootstrap4/bootstrap.min.js "></script>
+	<script src="../static/plugins/easing/easing.js "></script>
+	<script src="../static/plugins/parallax-js-master/parallax.min.js "></script>
+	<script src="../static/plugins/Isotope/isotope.pkgd.min.js "></script>
+	<script src="../static/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js "></script>
+	<script src="../static/plugins/jquery-ui-1.12.1.custom/jquery-ui.js "></script>
+	<script src="../static/js/categories_custom.js "></script>
 	{% endblock %}
