@@ -1,0 +1,10 @@
+REM INSERTING into representante_cliente
+SET DEFINE OFF;
+--representante 1:
+Insert into representante_cliente(K_CLIENTEREP,F_INICIO_REP,F_FIN_REP,K_TIPOID_CLI,K_IDENTIFICACION_CLI,K_TIPOID_REP,K_IDENTIFICACION_REP) values ('1',to_date('21/08/21','DD/MM/RR'),NULL,'CC','21111','CC','1111111111');
+
+--Representante 2
+Insert into representante_cliente(K_CLIENTEREP,F_INICIO_REP,F_FIN_REP,K_TIPOID_CLI,K_IDENTIFICACION_CLI,K_TIPOID_REP,K_IDENTIFICACION_REP) values ('2',to_date('21/08/21','DD/MM/RR'),NULL,'CC','21112','CC','1111111112');
+
+--Representante 3
+Insert into representante_cliente(K_CLIENTEREP,F_INICIO_REP,F_FIN_REP,K_TIPOID_CLI,K_IDENTIFICACION_CLI,K_TIPOID_REP,K_IDENTIFICACION_REP) values ('3',to_date('22/08/21','DD/MM/RR'),NULL,'CC','21113','CC','1111111112');

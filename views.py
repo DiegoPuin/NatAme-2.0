@@ -13,6 +13,7 @@ shopBag = Blueprint("shopbag", __name__, url_prefix="/shopbag")
 categories = Blueprint("categories", __name__, url_prefix="/categories")
 login = Blueprint("login", __name__, url_prefix="/login")
 register = Blueprint("register", __name__, url_prefix="/register")
+stadistics = Blueprint("stadistics", __name__, url_prefix="/stadistics")
 
 @home.route("/", methods=["GET"])
 def show_home():
@@ -77,10 +78,14 @@ def add_product_to_cart(product_id):
 
 ######################## Metodos para las rutas de categories ######################################
 
-@categories.route("/", methods=["GET"])
-def show_categories():
-    return render_template('categories.html', products=getProductsWhitPrice()) 
-     
+#PARA ENVIAR EL RESPONSE_BODY COMPLETO YO TOME LA PALABRA INFO, PODRIA SER UNA BUENA CONVENCION
+#PARA CUANDO ALGUIEN REESCRIBA ALGO NO SE DAÑE LO DEL OTRO
+@categories.route("/<string:name_category>", methods=["GET"])
+def show_categories(name_category):
+    if(name_category == "all"):
+        return render_template('categories.html', info=getProductsOfAllCategory())
+    else:
+        return render_template('categories.html', info=getProductsOfDeterminateCategory(name_category))
 ######################## Metodos para las rutas del register ##########################################
 
 @register.route("/", methods=["GET"])
@@ -114,3 +119,7 @@ def login_post():
         return render_template('home.html')
     else:
         return data
+
+@stadistics.route('/', methods=['GET'])
+def show_stadistics():
+    return getSalesByAllRegionsError()

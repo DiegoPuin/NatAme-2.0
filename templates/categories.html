@@ -47,10 +47,10 @@
 								<div class="sidebar_title">Top Categorias</div>
 								<div class="sidebar_section_content">
 									<ul>
-										<li><a href="">Nutricion</a></li>
-										<li><a href="">Belleza</a></li>
-										<li><a href="">Hogar</a></li>
-										<li><a href="">Cuidado personal</a></li>
+										<li><a href="/categories/Nutricion">Nutricion</a></li>
+										<li><a href="/categories/Belleza">Belleza</a></li>
+										<li><a href="/categories/Hogar">Hogar</a></li>
+										<li><a href="/categories/Cuidado personal">Cuidado personal</a></li>
 									</ul>
 								</div>
 							</div>
@@ -60,7 +60,8 @@
 								<div class="sidebar_title">Todas las categorias</div>
 								<div class="sidebar_section_content sidebar_color_content mCustomScrollbar" data-mcs-theme="minimal-dark">
 									<ul>
-										{% for categoria in products.categories %}
+										<!-- PARA CONFIGURAR EL HTML UNICAMENTE HACE FALTA COLOCAR INFO.LA_INFO_QUE_QUERAMOS -->
+										{% for categoria in info.categories %}
 										<li><a href="/categories/{{categoria.name}}">{{ categoria.name }}</a></li>
 										{% endfor %}
 									</ul>
@@ -68,7 +69,7 @@
 							</div>
 						</div>
 
-						<div class="current_page">Nutricion</div>
+						<div class="current_page">{{ info.current_category }}</div>
 					</div>
 					<div class="col-12">
 						<div class="product_sorting clearfix">
@@ -111,7 +112,7 @@
 						<div class="product_grid">
 
 							<!-- Product -->
-							{% for product in products.data %}
+							{% for product in info.products %}
 							<div class="product">
 								<div class="product_image"><img src="../static/images/product_1.jpg" alt=""></div>
 								<div class="product_content clearfix">

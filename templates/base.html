@@ -6,9 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/animate.css">
-	<link rel="stylesheet" type="text/css" href="../static/plugins/colorbox/colorbox.css"> 
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home_responsive.css') }}">-->
+	<link rel="stylesheet" type="text/css" href="../static/plugins/colorbox/colorbox.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home_responsive.css') }}"> -->
 	{% block head %}
 	{% endblock %}
 </head>
@@ -27,11 +27,11 @@
 				
 				<nav class="main_nav">
 					<ul>
-						<li><a href="../categories">Nutricion</a></li>
-						<li><a href="../categories">Belleza</a></li>
-						<li><a href="../categories">Hogar</a></li>
-						<li><a href="../categories">Cuidado personal</a></li>
-						<li><a href="../categories">Otros</a></li>
+						<li><a href="../categories/Nutricion">Nutricion</a></li>
+						<li><a href="../categories/Belleza">Belleza</a></li>
+						<li><a href="../categories/Hogar">Hogar</a></li>
+						<li><a href="../categories/Cuidado Personal">Cuidado personal</a></li>
+						<li><a href="../categories/Todas">Todas</a></li>
 					</ul>
 				</nav>
 				<div class="header_content ml-auto">
@@ -96,11 +96,11 @@
 			</div>
 			<nav class="menu_nav">
 				<ul class="menu_mm">
-					<li class="menu_mm"><a href="">Region Caribe</a></li>
-					<li class="menu_mm"><a href="">Region Pacifica</a></li>
-					<li class="menu_mm"><a href="">Region Andina</a></li>
-					<li class="menu_mm"><a href="">Region Orinoquia</a></li>
-					<li class="menu_mm"><a href="">Region Amazonica</a></li>
+					<li class="menu_mm"><a href="/home/Caribe">Region Caribe</a></li>
+					<li class="menu_mm"><a href="/home/Pacifica">Region Pacifica</a></li>
+					<li class="menu_mm"><a href="/home/Andina">Region Andina</a></li>
+					<li class="menu_mm"><a href="/home/Orinoquia">Region Orinoquia</a></li>
+					<li class="menu_mm"><a href="/home/Amazonica">Region Amazonica</a></li>
 				</ul>
 			</nav>
 		</div>

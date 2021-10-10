@@ -1,11 +1,13 @@
 from os import error
 from connect_db import connect
 
-RESPONSE_BODY = {"message": "", "data": [], "categories": [], "metadata": [], "USER_LOCAL": ""}
+#RETORNAR EL RESPONSE BODY COMPLETO PARA ASI PODER SELECCIONAR LOS 
+#DATOS QUE NECESITEMOS SIN INTERFERIR EN LO QUE HACE EL OTRO
+RESPONSE_BODY = {"products": [], "categories": [], "current_category": "", "USER_LOCAL": "", "regions": [], "error": ""}
 LOCAL_USER_ID = -1
 
 def getCategoriesNames(cant):
-    vaciar_RESPONSE
+    vaciar_RESPONSE()
     conexion = connect()
     sql = "SELECT N_NOMCATEGORIA FROM categoria WHERE ROWNUM <= " + str(cant)
     for category in conexion.sentenciaCompuesta(sql):
@@ -13,17 +15,19 @@ def getCategoriesNames(cant):
     conexion.close()
     return RESPONSE_BODY
 
+#Cuando se trae un solo elemento en el SQL lo trae igual como
+#una tupla asi que hay que decirle que en el response_body solo tenga
+#en cuenta la posicion 0 para que la informacion se pase bien
 def getAllCategoriesNames():
-    vaciar_RESPONSE
     conexion = connect()
     sql = "SELECT N_NOMCATEGORIA FROM categoria"
     for category in conexion.sentenciaCompuesta(sql):
-        RESPONSE_BODY["categories"] += {"name": category},
+        RESPONSE_BODY["categories"] += {"name": category[0]},
     conexion.close()
-    #return RESPONSE_BODY["categories"]
+    return RESPONSE_BODY
 
 def getRegionNames():
-    vaciar_RESPONSE
+    vaciar_RESPONSE()
     conexion = connect()
     sql = "SELECT N_NOMBRE_REGION FROM region"
     for region in conexion.sentenciaCompuesta(sql):
@@ -32,14 +36,23 @@ def getRegionNames():
     return RESPONSE_BODY["data"]
 
 def getProductsWhitPrice():
-    vaciar_RESPONSE
-    getAllCategoriesNames()
     conexion = connect()
     sql1 = "SELECT pr.k_producto, pr.n_nomproducto, i.v_precio_unidad FROM PAIS p, REGION r, PRODUCTO pr, INVENTARIO i WHERE UPPER(p.n_nombre_pais) " 
     sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'CARIBE\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
     sql3 = " AND i.k_producto=pr.k_producto"
     for id, name, price  in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
-        RESPONSE_BODY["data"] += {"id": id, "name": name, "price": price},
+        RESPONSE_BODY["products"] += {"id": id, "name": name, "price": price},
+    conexion.close()
+    return RESPONSE_BODY
+
+def getProductsWhitPriceOfOneCategory(category_name):
+    conexion = connect()
+    sql1 = "SELECT pr.k_producto, pr.n_nomproducto, i.v_precio_unidad FROM PAIS p, REGION r, PRODUCTO pr, INVENTARIO i, CATEGORIA c WHERE UPPER(p.n_nombre_pais) " 
+    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'CARIBE\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
+    sql3 = " AND i.k_producto=pr.k_producto AND UPPER(c.n_nomcategoria) = \'" + category_name.upper() + "\'" 
+    print(sql3) 
+    for id, name, price  in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
+        RESPONSE_BODY["products"] += {"id": id, "name": name, "price": price},
     conexion.close()
     return RESPONSE_BODY
 
@@ -82,10 +95,33 @@ def getUserAndPayMethod():
     return RESPONSE_BODY
 
 
+def getProductsOfAllCategory():
+    RESPONSE_BODY["current_category"] = "TODAS"
+    getAllCategoriesNames()
+    getProductsWhitPrice()
+    return RESPONSE_BODY
+
+def getProductsOfDeterminateCategory(category_name):
+    RESPONSE_BODY["current_category"] = category_name.upper()
+    getAllCategoriesNames()
+    getProductsWhitPriceOfOneCategory(category_name)
+    return RESPONSE_BODY
+
+def getSalesByAllRegions():
+    conexion = connect()
+    try:
+        sql1 = "SELECT R.n_nombre_region, SUM(pe.q_valort) FROM producto PR, inventario I, item IT, pedido PE, region R WHERE "
+        sql2 = "PR.k_producto = I.k_producto AND I.k_producto = IT.k_producto AND i.k_region = r.k_region AND IT.k_pedido = pe.k_pedido "
+        sql3 = "GROUP BY R.n_nombre_region"
+        for name, sum in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
+            RESPONSE_BODY["regions"] += {"name": name, "ventasT": sum},
+        return RESPONSE_BODY
+    except error:
+        print(error)
 
 def vaciar_RESPONSE():
     global RESPONSE_BODY
-    RESPONSE_BODY = {"message": "", "data": [], "categories": [], "metadata": [], "USER_LOCAL": ""}
+    RESPONSE_BODY = {}
     return RESPONSE_BODY
 
 def get_USER_LOCAL():
@@ -174,3 +210,13 @@ return render_template('shopcart2.html',categoria_1=categoria_1,longitud_1=longi
 else:
 return render_template('shopcart.html',categoria=categoria,longitud=longitud)
 '''
+
+def getSalesByAllRegionsError():
+    conexion = connect()
+    try:
+        for region, name, desc, sum in conexion.sentenciaFuncion():
+            RESPONSE_BODY["products"] += {"region": region, "name": name, "Desc": desc, "Cant": sum},
+        return RESPONSE_BODY
+    except error:
+        RESPONSE_BODY["error"] = error
+        return RESPONSE_BODY

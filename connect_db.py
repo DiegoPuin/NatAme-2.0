@@ -46,3 +46,11 @@ class connect():
         salida = cursor.fetchall()
         cursor.close()
         return salida
+
+    def sentenciaFuncion(self):
+        cursor = self.conexion.cursor()
+        myvar = cursor.var(cx_Oracle.CURSOR)
+        cursor.callfunc("FU_PROD_MAS_VENDIDO", myvar, [0, "null"])              
+        datos = myvar.getvalue().fetchall()
+        cursor.close()
+        return datos
