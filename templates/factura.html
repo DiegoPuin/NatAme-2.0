@@ -1,0 +1,170 @@
+{% extends "/base.html"%} {% block head %}
+<title>Factura</title>{% endblock %}
+
+
+<!-- Header -->
+
+
+<!-- Menu -->
+
+
+<!-- Cart -->
+
+
+{% block content %}
+
+<div class="cart_container ">
+    <div class="container ">
+
+        <div class="col-lg-12 ">
+            <div class="cart_details">
+                {%if dict%}
+                <div class="checkout_title">Factura: {{dict['factura'][0][8]}}</div>
+                <br>
+                <div class="checkout_title">Fecha: {{dict['factura'][0][9]}}</div>
+                {%endif%}
+            </div>
+        </div>
+        <br>
+        <div class="checkout_title">Cliente</div>
+
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+
+
+                    <div class="cart_bar_title_content  ">
+                        <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
+                            <div class="cart_bar_title_price ">Tipo ID</div>
+                            <div class="cart_bar_title_quantity ">ID</div>
+                            <div class="cart_bar_title_total ">Nombre</div>
+                            <div class="cart_bar_title_total ">Apellido</div>
+                            <div class="cart_bar_title_total ">Ciudad</div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% if dict%}
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_products ">
+                    <ul>
+                        <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start ">
+                            <div class="cart_product_info  ">
+                                <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
+                                    <div class="cart_product_name ">{{ dict['factura'][0][0]}}</div>
+                                    <div class="cart_product_price "> {{ dict['factura'][0][1]}}</div>
+                                    <div class="product_quantity_container ">{{ dict['factura'][0][2]}}</div>
+                                    <div class="cart_product_total "> {{ dict['factura'][0][3]}}</div>
+                                    <div class="cart_product_total "> {{ dict['factura'][0][7]}}</div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <br>
+        <div class="checkout_title">Representante</div>
+
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+
+                    <div class="cart_bar_title_content  ">
+                        <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
+                            <div class="cart_bar_title_price ">Tipo ID</div>
+                            <div class="cart_bar_title_quantity ">ID</div>
+                            <div class="cart_bar_title_total ">Nombre</div>
+                            <div class="cart_bar_title_total ">Apellido</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% if dict%}
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_products ">
+                    <ul>
+                        <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start ">
+                            <div class="cart_product_info  ">
+                                <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
+                                    <div class="cart_product_name ">{{ dict['factura'][0][11]}}</div>
+                                    <div class="cart_product_price "> {{ dict['factura'][0][12]}}</div>
+                                    <div class="product_quantity_container ">{{ dict['factura'][0][13]}}</div>
+                                    <div class="cart_product_total "> {{ dict['factura'][0][14]}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <br>
+        <div class="checkout_title">Productos</div>
+
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+
+                    <div class="cart_bar_title_content  ">
+                        <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
+                            <div class="cart_bar_title_price ">Item</div>
+                            <div class="cart_bar_title_quantity ">Nombre del producto</div>
+                            <div class="cart_bar_title_total ">Descripción</div>
+                            <div class="cart_bar_title_total ">Cantidad</div>
+                            <div class="cart_bar_title_total ">Precio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% if dict%}{% for item in dict.long_item_fact %}
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_products ">
+                    <ul>
+                        <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start ">
+                            <div class="cart_product_info  ">
+                                <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
+                                    <div class="cart_product_name ">{{ dict['item_factura'][item][0]}}</div>
+                                    <div class="cart_product_price "> {{ dict['item_factura'][item][1]}}</div>
+                                    <div class="product_quantity_container ">{{ dict['item_factura'][item][2]}}</div>
+                                    <div class="cart_product_total "> {{ dict['item_factura'][item][3]}}</div>
+                                    <div class="cart_product_total "> {{ dict['item_factura'][item][4]}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %} {% endif %}
+        <div class="row">
+            <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+                {% if dict%}
+                <div class="cart_bar_title_total ">Total: ${{ dict['factura'][0][10]}}</div>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

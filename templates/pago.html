@@ -1,0 +1,128 @@
+{% extends "/base.html"%}
+{% block head %}
+<title>Carro de compras - Pago</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="../static/bootstrap4/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cart.css') }}"">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cart_responsive.css') }}">
+{% endblock %} 
+
+{% block content %}
+
+<form method="POST" id="pago">
+    <div class="super_container mt-20">
+
+        <!-- Header -->
+
+
+
+        <!-- Menu -->
+
+
+
+        <!-- Home -->
+
+        <!-- <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../static/images/categories.jpg" data-speed="0.8"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_container">
+                        <div class="home_content">
+                            <div class="home_title">Pagar</div>
+                            <div class="breadcrumbs">
+                                <ul>
+                                    <li><a href="../home">Inicio</a></li>
+                                    <li><a href="">Representante X</a></li>
+                                    <li>Registrar representante</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+        <!-- Checkout -->
+        <div class="cart_container"></div>
+
+        <div class="checkout">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Billing Details -->
+
+
+                    <!-- Cart Details -->
+                    {%if dict%}
+                    <div class="col-lg-6 ">
+                        <div class="cart_details">
+                            <div class="checkout_title">Metodos de pago para:</div>
+                            <br>
+                            <div class="checkout_title">{{dict['usuario']['nombre']}} {{dict['usuario']['apellido']}}</div>
+                            <br>
+                            <div class="checkout_title">con {{dict['usuario']['tipoid']}}: {{dict['usuario']['id']}}</div>
+                            {%endif%}
+                            <!-- <div class="cart_total">
+								<ul>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">Product</div>
+										<div class="cart_total_price ml-auto">Total</div>
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">2 Piece Swimsuit x1</div>
+										<div class="cart_total_price ml-auto">$35.00</div>
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">Subtotal</div>
+										<div class="cart_total_price ml-auto">$35.00</div>
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">Shipping</div>
+										<div class="cart_total_price ml-auto">$5.00</div>
+									</li>
+									<li class="d-flex flex-row align-items-start justify-content-start total_row">
+										<div class="cart_total_title">Total</div>
+										<div class="cart_total_price ml-auto">$40.00</div>
+									</li>
+								</ul>
+							</div> -->
+                            <div class="payment_options">
+                                {%if dict%} {%for i in dict.longitud_m_pago%}
+                                <div>
+                                    <input value="{{ dict['pago']['t_pago'][i] }}" type="radio" id="radio_payment_1" name="{{ dict['pago']['id'][i] }}" class="regular_radio">
+                                    <label for="radio_payment_1">{{ dict['pago']['t_pago'][i] }}</label>
+                                </div>
+                                {%endfor%} {%endif%}
+
+                                <div>
+
+                                    <div class="visa payment_option">
+                                        <a href="#"><img src="../static/images/visa.jpg" alt=""></a>
+                                    </div>
+                                    <div class="master payment_option">
+                                        <a href="#"><img src="../static/images/master.jpg" alt=""></a>
+                                    </div>
+                                </div>
+</form>
+<button class="cart_total_button">Registrar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block jscripst %}
+	<script src="../static/js/jquery-3.2.1.min.js"></script>
+	<script src="../static/bootstrap4/popper.js"></script>
+	<script src="../static/bootstrap4/bootstrap.min.js"></script>
+	<script src="../static/plugins/easing/easing.js"></script>
+	<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="../static/js/cart_custom.js"></script>
+{% endblock %}

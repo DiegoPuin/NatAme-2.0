@@ -13,26 +13,6 @@
 {% block content %}
 
 <form method="POST" id="Shopcar">
-    <div class="home">
-        <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../static/images/cart.jpg" data-speed="0.8"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="home_container">
-                        <div class="home_content">
-                            <div class="home_title">Carro de compras</div>
-                            <!-- <div class="breadcrumbs">
-                                <ul>
-                                    <li><a href="index.html">Inicio</a></li>
-                                    <li>Carro de compras</li>
-                                </ul>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="cart_container ">
         <div class="container ">
             <div class="row ">
@@ -71,16 +51,16 @@
                                 <div class="cart_product_info ml-auto ">
                                     <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
                                         <!-- Product Price -->
-                                        <div class="cart_product_price ">{{ categoria_1['precio'][item]}}</div>
+                                        <div class="cart_product_price ">$ {{ categoria_1['precio'][item]}}</div>
                                         <!-- Product Quantity -->
                                         <div class="product_quantity_container ">
-                                            <div class="product_quantity clearfix ">
-                                                <input id=" " type="text " name="{{categoria_1['id'][item]}}" value="{{compra['cantidad'][item]}}">
 
-                                            </div>
+                                            {{compra['cantidad'][item]}}
+
+
                                         </div>
                                         <!-- Products Total Price -->
-                                        <div class="cart_product_total ">{{ categoria_1['total'][item]}}</div>
+                                        <div class="cart_product_total ">$ {{ categoria_1['total'][item]}}</div>
                                         <!-- Product Cart Trash Button -->
                                         <div class="cart_product_button ">
                                             <button class="cart_product_remove ">
@@ -99,12 +79,33 @@
             </div>
             {% endfor %} {% endif %}
 
-
             <div class="row ">
                 <div class="col ">
-                    <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start ">
-                        <button class="button_update cart_button_2 ml-md-auto ">Continuar compra</button>
+                    <!-- <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start ">
+            <button class="button_update cart_button_2 ml-md-auto ">Continuar compra</button>
+        </div> -->
+                    {%if subtotal%}
+                    <div class="col-lg-5 offset-lg-1 ">
+                        <div class="cart_total ">
+                            <div class="cart_title ">Compra total</div>
+                            <ul>
+                                <li class="d-flex flex-row align-items-center justify-content-start ">
+                                    <div class="cart_total_title ">Subtotal sin iva</div>
+                                    <div class="cart_total_price ml-auto ">$ {{subtotal}}</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start ">
+                                    <div class="cart_total_title ">Domicilio</div>
+                                    <div class="cart_total_price ml-auto ">$ 0.00</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start ">
+                                    <div class="cart_total_title ">Total con iva (19%)</div>
+                                    <div class="cart_total_price ml-auto ">$ {{total}}</div>
+                                </li>
+                            </ul>
+                            <button class="cart_total_button "> <a href="../pago">Continuar al pago</a> </button>
+                        </div>
                     </div>
+                    {%endif%}
                 </div>
             </div>
 
@@ -121,30 +122,10 @@
 						</div>
 					</div> -->
                 <!-- Cart Total -->
-                <div class="col-lg-5 offset-lg-1 ">
-                    <div class="cart_total ">
-                        <div class="cart_title ">Compra total</div>
-                        <ul>
-                            <li class="d-flex flex-row align-items-center justify-content-start ">
-                                <div class="cart_total_title ">Subtotal</div>
-                                <div class="cart_total_price ml-auto ">$35.00</div>
-                            </li>
-                            <li class="d-flex flex-row align-items-center justify-content-start ">
-                                <div class="cart_total_title ">Domicilio</div>
-                                <div class="cart_total_price ml-auto ">$5.00</div>
-                            </li>
-                            <li class="d-flex flex-row align-items-center justify-content-start ">
-                                <div class="cart_total_title ">Total</div>
-                                <div class="cart_total_price ml-auto ">$40.00</div>
-                            </li>
-                        </ul>
-                        <button class="cart_total_button ">Continuar al pago</button>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
-
 </form>
 
 {% endblock %}

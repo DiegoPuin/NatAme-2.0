@@ -11,9 +11,10 @@ def create_app(config=DevelopmentConfig):
     app.config.from_object(config)
     #login_manager.login_view = "login_get"
     #login_manager.init_app(app)
-    from views import home, shopCart, shopBag, categories, login, register, stadistics, users #Movido para evitar importaciones circulares
+    from views import shopCart2, pago, factura, register_cliente, home, shopCart, shopBag, categories, login, register, stadistics, users 
     ACTIVE_ENDPOINTS = [('/home', home), ('/shopcart', shopCart), ("/shopbag", shopBag), ("/categories", categories), ("/login", login), 
-    ("/register", register), ("/stadistics", stadistics), ("/user", users)] #Movido para evitar importaciones circulares
+    ("/register", register), ("/stadistics", stadistics), ("/user", users), ('/shopcart2', shopCart2),('/pago', pago),('/factura',factura),
+    ('/register_cliente',register_cliente)] #Movido para evitar importaciones circulares
     for url, blueprint in ACTIVE_ENDPOINTS:
         app.register_blueprint(blueprint, url_prefix=url)
     return app

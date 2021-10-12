@@ -111,7 +111,7 @@ def getSalesByAllRegions():
     RESPONSE_BODY["stadistics"] = []
     conexion = connect()
     try:
-        for region, sum in conexion.sentenciaFuncion("FU_REGIONAL_MAS_VENTAS"):
+        for region, sum in conexion.sentenciaFuncion("FU_REGIONAL_MAS_VENTAS", [0, "null"]):
             RESPONSE_BODY["stadistics"] += {"region": region, "V_Total": sum},
         return RESPONSE_BODY
     except error:
@@ -122,7 +122,7 @@ def getBestSellingProductsByRegion():
     RESPONSE_BODY["stadistics"] = []
     conexion = connect()
     try:
-        for region, product, cantidad in conexion.sentenciaFuncion("FU_PROD_MAS_VENDIDO"):
+        for region, product, cantidad in conexion.sentenciaFuncion("FU_PROD_MAS_VENDIDO", [0, "null"]):
             RESPONSE_BODY["stadistics"] += {"region": region, "product": product, "quantity": cantidad},
         return RESPONSE_BODY
     except error:
