@@ -1,0 +1,104 @@
+{% extends "/base.html"%} {% block head %}
+<title>Pedidos</title>{% endblock %}
+
+
+
+
+
+<!-- Header -->
+
+
+
+<!-- Menu -->
+
+
+
+<!-- Home -->
+
+
+
+<!-- Cart -->
+{% block content %}
+<form method="POST" id="Shopcar">
+    <div class="cart_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="cart_title">Tus pedidos</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="cart_bar d-flex flex-row align-items-center justify-content-start">
+                        <div class="cart_bar_title_name"># Pedido</div>
+                        <div class="cart_bar_title_name">Fecha</div>
+                        <div class="cart_bar_title_name ">Valor</div>
+                        <div class="cart_bar_title_quantity"> ID</div>
+                        <div class="cart_bar_title_quantity">Representante</div>
+                        <div class="cart_bar_title_content ml-auto">
+                            <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
+
+
+                                <div class="cart_bar_title_quantity">Calificacion</div>
+                                <div class="cart_bar_title_quantity">Comentarios</div>
+                                <div class="cart_bar_title_button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if dict%}{% for i in dict.long_pedidos %}
+            <div class="row">
+                <div class="col">
+                    <div class="cart_products">
+                        <ul>
+                            <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+                                <!-- Product Image -->
+                                <!-- <div class="cart_product_image"><img src="images/cart_product_1.jpg" alt=""></div> -->
+                                <!-- Product Name -->
+                                <div class="cart_product_name"> {{ dict['pedidos']['id_ped'][i] }} </div>
+                                <div class="cart_product_name"> {{ dict['pedidos']['fecha_ped'][i] }} </div>
+                                <div class="cart_product_name">$ {{ dict['pedidos']['precio_ped'][i] }} </div>
+                                <div class="product_quantity_container"> {{ dict['pedidos']['tid_ped_rep'][i] }} </div>
+                                <!-- Products Total Price -->
+                                <div class="cart_product_total"> {{ dict['pedidos']['id_ped_rep'][i] }} </div>
+                                <div class="cart_product_info ml-auto">
+                                    <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
+                                        <!-- Product Price -->
+
+                                        <!-- Product Quantity -->
+
+                                        <div class="product_quantity_container ">
+                                            <div class="product_quantity clearfix ">
+                                                <input id=" " type="text " name="{{ dict['pedidos']['id_ped'][i] }}" value="{{ dict['pedidos']['cal_ped'][i] }}">
+                                            </div>
+                                        </div>
+                                        <div class=" ">
+                                            <div class=" ">
+                                                <textarea id=" " type="text " name="c{{ dict['pedidos']['id_ped'][i] }}" value="">{{ dict['pedidos']['comentarios'][i] }}</textarea>
+                                            </div>
+                                        </div>
+                                        <!-- Product Cart Trash Button -->
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %} {% endif %}
+
+        </div>
+        <div class="row ">
+            <div class="col ">
+                <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start ">
+
+                    <button class="button_update cart_button_2 ml-md-auto ">Calificar pedidos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

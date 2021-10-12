@@ -1,0 +1,107 @@
+{% extends "/base.html"%} {% block head %}
+<title>Registro</title>{% endblock %}
+
+<!-- Header -->
+
+<!-- Menu -->
+
+<!-- Home -->
+{% block content %}
+<!--
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../static/images/categories.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_container">
+                    <div class="home_content">
+                        <div class="home_title">Registar</div>
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a href="../home">Inicio</a></li>
+                                <li><a href="">Representante X</a></li>
+                                <li>Registrar representante</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<!-- Checkout -->
+<h1>REGISTRAR REPRESENTANTE</h1>
+<div class="checkout">
+    <div class="container">
+        <div class="row">
+
+            <!-- Billing Details -->
+            <div class="col-lg-12">
+                <div class="billing">
+                    <div class="checkout_title">Datos de representante</div>
+                    <div class="checkout_form_container">
+                        <form method="POST" id="registro">
+                            <div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
+                                <input name="Nombre" type="text" class="checkout_input checkout_input_50" placeholder="Nombres" required="required">
+                                <input name="Apellidos" type="text" class="checkout_input checkout_input_50" placeholder="Apellidos" required="required">
+                            </div>
+                            <div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
+                                <input name="Id" type="text" class="checkout_input" placeholder="Numero de identificacion">
+                                <select name="tipo_id" id="tipo_id" class="country_select checkout_input">
+									<option disabled selected>Tipo identifiación</option>
+									<option>CC</option>
+									<option>CE</option>
+									<option>PA</option>
+									<option>NI</option>
+									<option>OT</option>
+								</select>
+                            </div>
+
+                            <input name="Email" type="text" class="checkout_input" placeholder="E-mail" required="required">
+                            <input name="Direccion" type="text" class="checkout_input" placeholder="Direccion" required="required">
+                            <input name="Telefono" type="text" class="checkout_input" placeholder="Telefono" required="required">
+                            <select name="Genero" id="Genero" class="country_select checkout_input">
+										<option disabled selected>Genero</option>
+										<option value="M">Masculino</option>
+										<option value="F">Femenino</option>
+										
+							</select>
+
+
+                            <select name="region" id="region" class="country_select checkout_input">
+								<option disabled selected>Regional</option>
+								<option value="1" >Caribe</option>
+								<option value="2" >Pacifica</option>
+								<option value="3" >Andina</option>
+								<option value="4">Llanos orientales</option>
+								<option value="5">Amazonia</option>
+							</select>
+                            <div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
+                                <input name="Nacimiento" type="text" class="checkout_input checkout_input_50" placeholder="Fecha de nacimiento" required="required">
+                                <select name="pais" id="pais" class="country_select checkout_input">
+									<option disabled selected>País</option>
+									<option value="1">Colombia</option>
+									
+								</select>
+                            </div>
+                            <input name="Usuario" type="text" class="checkout_input" placeholder="Usuario" required="required">
+                            <script>
+                                function myFunction() {
+                                    alert("Representante registrado exitosamente.!");
+
+                                }
+                            </script>
+                            <button class="cart_total_button" onclick=myFunction()>Registrar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

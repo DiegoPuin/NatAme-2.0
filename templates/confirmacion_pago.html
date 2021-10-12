@@ -1,0 +1,157 @@
+{% extends "/base.html"%} {% block head %}
+<title>Carro de compras</title>{% endblock %}
+
+
+<!-- Header -->
+
+
+<!-- Menu -->
+
+
+<!-- Cart -->
+
+
+{% block content %}
+<form method="POST" id="Shopcar">
+    <div class="cart_container ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_title ">Productos en el carro 2</div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+                        <div class="cart_bar_title_name ">Producto </div>
+                        <div class="cart_bar_title_content ml-auto ">
+                            <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
+                                <div class="cart_bar_title_price ">Precio</div>
+                                <div class="cart_bar_title_quantity ">Cantidad</div>
+                                <div class="cart_bar_title_total ">Total</div>
+                                <div class="cart_bar_title_button "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {%if dict%}
+            <div class="col-lg-12 ">
+                <div class="cart_details">
+                    <div class="checkout_title">Resumen y confirmación de pago</div>
+                    <br>
+                    <div class="checkout_title">{{dict['usuario']['nombre']}} {{dict['usuario']['apellido']}} {{dict['usuario']['tipoid']}}: {{dict['usuario']['id']}}</div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+                        <div class="cart_bar_title_name ">Producto </div>
+                        <div class="cart_bar_title_content ml-auto ">
+                            <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
+                                <div class="cart_bar_title_price ">Precio</div>
+                                <div class="cart_bar_title_quantity ">Cantidad</div>
+                                <div class="cart_bar_title_total ">Total</div>
+                                <div class="cart_bar_title_button "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {%endif%} {% if dict%}{% for item in dict.longitud_1 %}
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_products ">
+                        <ul>
+                            <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start ">
+                                <!-- Product Image -->
+                                <div class="cart_product_image "><img src="../static/images/cart_product_1.jpg " alt=" "></div>
+                                <!-- Product Name -->
+
+
+                                <div class="cart_product_name "><a href="../product ">{{ dict['categoria_1']['nombre'][item]}}</a></div>
+                                <div class="cart_product_info ml-auto ">
+                                    <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
+                                        <!-- Product Price -->
+                                        <div class="cart_product_price ">$ {{ dict['categoria_1']['precio'][item]}}</div>
+                                        <!-- Product Quantity -->
+                                        <div class="product_quantity_container ">{{dict['compra']['cantidad'][item]}}</div>
+                                        <!-- Products Total Price -->
+                                        <div class="cart_product_total ">$ {{ dict['categoria_1']['total'][item]}}</div>
+                                        <!-- Product Cart Trash Button -->
+                                        <div class="cart_product_button ">
+                                            <button class="cart_product_remove ">
+													<a href="# ">
+														<img src="../static/images/trash.png " alt=" ">
+													</a>
+												</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+
+            <div class="row ">
+                <div class="col ">
+                    <!-- <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start ">
+            <button class="button_update cart_button_2 ml-md-auto ">Continuar compra</button>
+        </div> -->
+                    {%if dict%}
+                    <div class="col-lg-5 offset-lg-1 ">
+                        <div class="cart_total ">
+                            <div class="cart_title ">Compra total</div>
+                            <ul>
+                                <li class="d-flex flex-row align-items-center justify-content-start ">
+                                    <div class="cart_total_title ">Total</div>
+                                    <div class="cart_total_price ml-auto ">$ {{dict['total']}}</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start ">
+                                    <div class="cart_total_title ">Medio de pago</div>
+                                    <div class="cart_total_price ml-auto ">{{dict['medio_pago']['m_pagoname']}}</div>
+                                </li>
+
+                            </ul>
+                            <script>
+                                function myFunction() {
+                                    alert("Pago Exitoso");
+
+                                }
+                            </script>
+
+                            <button class="cart_total_button " onclick=myFunction()> <a href="../factura">Pagar</a> </button>
+
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
+
+
+            <div class="row cart_extra ">
+                <!-- Cart Coupon -->
+                <!-- <div class="col-lg-6 ">
+						<div class="cart_coupon ">
+							<div class="cart_title ">coupon code</div>
+							<form action="# " class="cart_coupon_form d-flex flex-row align-items-start justify-content-start " id="cart_coupon_form ">
+								<input type="text " class="cart_coupon_input " placeholder="Coupon code " required="required ">
+								<button class="button_clear cart_button_2 ">apply coupon</button>
+							</form>
+						</div>
+					</div> -->
+                <!-- Cart Total -->
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "/base.html"%} {% block head %}
+<title>Carro de compras</title>{% endblock %}
+
+
+<!-- Header -->
+
+
+<!-- Menu -->
+
+
+<!-- Cart -->
+
+
+{% block content %}
+<form method="POST" id="Shopcar">
+
+    <div class="cart_container ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_title ">Productos en el carro</div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_bar d-flex flex-row align-items-center justify-content-start ">
+                        <div class="cart_bar_title_name ">Producto </div>
+                        <div class="cart_bar_title_content ml-auto ">
+                            <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end ">
+                                <div class="cart_bar_title_price ">Precio unitario</div>
+                                <div class="cart_bar_title_quantity ">Cantidad</div>
+                                <div class="cart_bar_title_button "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if longitud%}{% for item in longitud %}
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_products ">
+                        <ul>
+                            <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start ">
+                                <!-- Product Image -->
+                                <div class="cart_product_image "><img src="../static/images/cart_product_1.jpg " alt=" "></div>
+                                <!-- Product Name -->
+
+
+                                <div class="cart_product_name "><a href="../product ">{{ categoria['nombre'][item]}}</a></div>
+                                <div class="cart_product_info ml-auto ">
+                                    <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start ">
+                                        <!-- Product Price -->
+                                        <div class="cart_product_price ">{{ categoria['precio'][item]}}</div>
+                                        <!-- Product Quantity -->
+                                        <div class="product_quantity_container ">
+                                            <div class="product_quantity clearfix ">
+                                                <input id=" " type="text " name="{{categoria['id'][item]}}" value="0">
+
+                                            </div>
+                                        </div>
+                                        <!-- Products Total Price -->
+
+                                        <!-- Product Cart Trash Button -->
+                                        <div class="cart_product_button ">
+                                            <button class="cart_product_remove ">
+													<a href="# ">
+														<img src="../static/images/trash.png " alt=" ">
+													</a>
+												</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+
+
+            <div class="row ">
+                <div class="col ">
+                    <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start ">
+
+                        <button class="button_update cart_button_2 ml-md-auto ">Continuar compra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+
+{% endblock %}

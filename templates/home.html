@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inicio</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="../static/bootstrap4/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="../static/plugins/colorbox/colorbox.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home_responsive.css') }}">
+</head>
+<body>
+
+	<div class="super_container">
+
+		<!-- Header -->
+		<header class="header">
+
+			<div class="header_inner d-flex flex-row align-items-center justify-content-start">
+			
+				<div class="logo">
+					<a href="#">NatAmE</a>
+					<div class="logo_reggion">Region Andina</div>
+				</div>
+				
+				<nav class="main_nav">
+					<ul>
+						<li><a href="../categories">{{ categoria1 }}</a></li>
+						<li><a href="../categories">Comprar</a></li>
+						<li><a href="../categories">Hogar</a></li>
+						<li><a href="../categories">Cuidado personal</a></li>
+						<li><a href="../categories">Otros</a></li>
+					</ul>
+				</nav>
+
+				<div class="header_content ml-auto">
+					<div class="search header_search">
+						<form action="#">
+							<input type="search" class="search_input" required="required">
+							<button type="submit" id="search_button" class="search_button"><img src="../static/images/magnifying-glass.svg" alt=""></button>
+						</form>
+					</div>
+
+					<div class="shopping">	
+					<!-- Cart -->
+						<a href="../shopcart">
+							<div class="cart">
+								<img src="../static/images/shopping-cart.svg" alt="">
+								<div class="cart_num_container">
+									<div class="cart_num_inner">
+										<div class="cart_num">0</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					<!-- Bag -->
+						<a href="../shopbag">
+							<div class="bag">
+								<img src="../static/images/shopping-bag.svg" alt="">
+								<div class="bag_num_container">
+									<div class="bag_num_inner">
+										<div class="bag_num">0</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					<!-- Avatar -->
+						<a href="../login">
+							<div class="avatar">
+								<img src="../static/images/avatar.svg" alt="">
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+			</div>
+		</header>
+
+		<!-- Menu -->
+
+		<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+			<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+			<div class="logo menu_mm"><a href="">NatAmE</a></div>
+			<div class="search">
+				<form action="#">
+					<input type="search" class="search_input menu_mm" required="required">
+					<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="../static/images/magnifying-glass.svg" alt=""></button>
+				</form>
+			</div>
+			<nav class="menu_nav">
+				<ul class="menu_mm">
+					<li class="menu_mm"><a href="#">Region Caribe</a></li>
+					<li class="menu_mm"><a href="#">Region Pacifica</a></li>
+					<li class="menu_mm"><a href="#">Region Andina</a></li>
+					<li class="menu_mm"><a href="#">Region Orinoquia</a></li>
+					<li class="menu_mm"><a href="#">Region Amazonica</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<!-- Home -->
+
+		<div class="home">
+			
+			<!-- Home Slider -->
+
+			<div class="home_slider_container">
+				<div class="owl-carousel owl-theme home_slider">
+					
+					<!-- Home Slider Item -->
+					<div class="owl-item">
+						<div class="home_slider_background" style="background-image:url(../static/images/comestibles.jpg)"></div>
+						<div class="home_slider_content">
+							<div class="home_slider_content_inner">
+								<div class="home_slider_subtitle">Productos</div>
+								<div class="home_slider_title">Nutricion</div>
+							</div>	
+						</div>
+					</div>
+
+					<!-- Home Slider Item -->
+					<div class="owl-item">
+						<div class="home_slider_background" style="background-image:url(../static/images/aseo.jpg)"></div>
+						<div class="home_slider_content">
+							<div class="home_slider_content_inner">
+								<div class="home_slider_subtitle">Productos</div>
+								<div class="home_slider_title">Hogar</div>
+							</div>	
+						</div>
+					</div>
+
+					<!-- Home Slider Item -->
+					<div class="owl-item">
+						<div class="home_slider_background" style="background-image:url(../static/images/makeup.jpg)"></div>
+						<div class="home_slider_content">
+							<div class="home_slider_content_inner">
+								<div class="home_slider_subtitle">Productos</div>
+								<div class="home_slider_title">Belleza</div>
+							</div>	
+						</div>
+					</div>
+
+					<!-- Home Slider Item -->
+					<div class="owl-item">
+						<div class="home_slider_background" style="background-image:url(../static/images/cuidado_personal.jpg)"></div>
+						<div class="home_slider_content">
+							<div class="home_slider_content_inner">
+								<div class="home_slider_subtitle">Productos</div>
+								<div class="home_slider_title">Cuidado Personal</div>
+							</div>	
+						</div>
+					</div>
+
+				</div>
+				
+				<!-- Home Slider Nav -->
+
+				<div class="home_slider_next d-flex flex-column align-items-center justify-content-center"><img src="../static/images/arrow_r.png" alt=""></div>
+
+				<!-- Home Slider Dots -->
+
+				<div class="home_slider_dots_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="home_slider_dots">
+									<ul id="home_slider_custom_dots" class="home_slider_custom_dots">
+										<li class="home_slider_custom_dot active">01.<div></div></li>
+										<li class="home_slider_custom_dot">02.<div></div></li>
+										<li class="home_slider_custom_dot">03.<div></div></li>
+										<li class="home_slider_custom_dot">04.<div></div></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+
+		<!-- Promo -->
+
+		<div class="promo">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title_container text-center">
+							<div class="section_subtitle">LOS MEJORES PRODUCTOS</div>
+							<div class="section_title">A LOS MEJORES PRECIOS</div>
+						</div>
+					</div>
+				</div>
+				<div class="row promo_container">
+
+					<!-- Promo Item -->
+					<div class="col-lg-4 promo_col">
+						<div class="promo_item">
+							<div class="promo_image">
+								<img src="../static/images/promo_1.jpg" alt="">
+								<div class="promo_content promo_content_1">		
+								</div>
+							</div>
+							<div class="promo_link"><a href="#">Comprar ahora con un 30%</a></div>
+						</div>
+					</div>
+
+					<!-- Promo Item -->
+					<div class="col-lg-4 promo_col">
+						<div class="promo_item">
+							<div class="promo_image">
+								<img src="../static/images/promo_2.jpg" alt="">
+								<div class="promo_content promo_content_2">
+									
+								</div>
+							</div>
+							<div class="promo_link"><a href="#">Comprar ahora con un 10%</a></div>
+						</div>
+					</div>
+
+					<!-- Promo Item -->
+					<div class="col-lg-4 promo_col">
+						<div class="promo_item">
+							<div class="promo_image">
+								<img src="../static/images/promo_3.jpg" alt="">
+								<div class="promo_content promo_content_3">
+								
+								</div>
+							</div>
+							<div class="promo_link"><a href="#">comprar ahora con un 5%</a></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- New Arrivals -->
+
+		<div class="arrivals">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title_container text-center">
+							
+							<div class="section_title">NUEVOS PRODUCTOS</div>
+						</div>
+					</div>
+				</div>
+				<div class="row products_container">
+
+					<!-- Product -->
+					<div class="col-lg-4 product_col">
+						<div class="product">
+							<div class="product_image">
+								<img src="../static/images/product_1.jpg" alt="">
+							</div>
+							<!-- <div class="rating rating_4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div> -->
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="../product">Porta Escobas</a></div>
+									<div class="product_price">$15.000</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div>
+									<!-- <div class="product_fav product_option">+</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Product -->
+					<div class="col-lg-4 product_col">
+						<div class="product">
+							<div class="product_image">
+								<img src="../static/images/product_2.jpg" alt="">
+							</div>
+							<!-- <div class="rating rating_4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div> -->
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="../product">Desinfectante antiséptico</a></div>
+									<div class="product_price">$28.000</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div>
+									<!-- <div class="product_fav product_option">+</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Product -->
+					<div class="col-lg-4 product_col">
+						<div class="product">
+							<div class="product_image">
+								<img src="../static/images/product_3.jpg" alt="">
+							</div>
+							<!-- <div class="rating rating_4">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div> -->
+							<div class="product_content clearfix">
+								<div class="product_info">
+									<div class="product_name"><a href="../static/product.html">Dog Chow</a></div>
+									<div class="product_price">$50.000</div>
+								</div>
+								<div class="product_options">
+									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div>
+									<!-- <div class="product_fav product_option">+</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="../static/js/jquery-3.2.1.min.js"></script>
+	<script src="../static/bootstrap4/popper.js"></script>
+	<script src="../static/bootstrap4/bootstrap.min.js"></script>
+	<script src="../static/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="../static/plugins/easing/easing.js"></script>
+	<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="../static/plugins/colorbox/jquery.colorbox-min.js"></script>
+	<script src="../static/js/custom.js"></script>
+</body>
+</html>
