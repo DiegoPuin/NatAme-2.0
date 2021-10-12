@@ -3,7 +3,8 @@ from connect_db import connect
 
 #RETORNAR EL RESPONSE BODY COMPLETO PARA ASI PODER SELECCIONAR LOS 
 #DATOS QUE NECESITEMOS SIN INTERFERIR EN LO QUE HACE EL OTRO
-RESPONSE_BODY = {"products": [], "categories": [], "current_category": "", "USER_LOCAL": "", "regions": [], "error": ""}
+RESPONSE_BODY = {"products": [], "categories": [], "current_category": "", "current_region": "Andina", "USER_LOCAL": "",
+ "regions": [], "error": "", "stadistics": [], "cli_repre": ""}
 LOCAL_USER_ID = -1
 
 def getCategoriesNames(cant):
@@ -38,7 +39,7 @@ def getRegionNames():
 def getProductsWhitPrice():
     conexion = connect()
     sql1 = "SELECT pr.k_producto, pr.n_nomproducto, i.v_precio_unidad FROM PAIS p, REGION r, PRODUCTO pr, INVENTARIO i WHERE UPPER(p.n_nombre_pais) " 
-    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'CARIBE\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
+    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'" + RESPONSE_BODY["current_region"].upper() + "\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
     sql3 = " AND i.k_producto=pr.k_producto"
     for id, name, price  in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
         RESPONSE_BODY["products"] += {"id": id, "name": name, "price": price},
@@ -48,9 +49,9 @@ def getProductsWhitPrice():
 def getProductsWhitPriceOfOneCategory(category_name):
     conexion = connect()
     sql1 = "SELECT pr.k_producto, pr.n_nomproducto, i.v_precio_unidad FROM PAIS p, REGION r, PRODUCTO pr, INVENTARIO i, CATEGORIA c WHERE UPPER(p.n_nombre_pais) " 
-    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'CARIBE\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
-    sql3 = " AND i.k_producto=pr.k_producto AND UPPER(c.n_nomcategoria) = \'" + category_name.upper() + "\'" 
-    print(sql3) 
+    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'" + RESPONSE_BODY["current_region"].upper() + "\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
+    sql3 = " AND i.k_producto=pr.k_producto AND UPPER(c.n_nomcategoria) = \'" + category_name.upper() + "\' AND pr.k_categoria = c.k_categoria"  
+    print(sql1 + sql2 + sql3)
     for id, name, price  in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
         RESPONSE_BODY["products"] += {"id": id, "name": name, "price": price},
     conexion.close()
@@ -60,7 +61,7 @@ def getProductByID(id_product):
     RESPONSE_BODY = vaciar_RESPONSE()
     conexion = connect()
     sql1 = "SELECT pr.k_producto, pr.n_nomproducto, i.v_precio_unidad FROM PAIS p, REGION r, PRODUCTO pr, INVENTARIO i WHERE UPPER(p.n_nombre_pais) " 
-    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'CARIBE\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
+    sql2 = "=\'COLOMBIA\' AND p.k_pais=r.K_pais AND UPPER(r.n_nombre_region)= \'" + RESPONSE_BODY["current_region"].upper() + "\' AND i.k_pais=r.K_pais AND i.k_region=r.k_region" 
     sql3 = " AND i.k_producto=pr.k_producto AND pr.k_producto=" + str(id_product)
     for id, name, price  in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
         RESPONSE_BODY["message"] = "SUCCESFULL"
@@ -94,7 +95,6 @@ def getUserAndPayMethod():
     conexion.close()
     return RESPONSE_BODY
 
-
 def getProductsOfAllCategory():
     RESPONSE_BODY["current_category"] = "TODAS"
     getAllCategoriesNames()
@@ -108,16 +108,39 @@ def getProductsOfDeterminateCategory(category_name):
     return RESPONSE_BODY
 
 def getSalesByAllRegions():
+    RESPONSE_BODY["stadistics"] = []
     conexion = connect()
     try:
-        sql1 = "SELECT R.n_nombre_region, SUM(pe.q_valort) FROM producto PR, inventario I, item IT, pedido PE, region R WHERE "
-        sql2 = "PR.k_producto = I.k_producto AND I.k_producto = IT.k_producto AND i.k_region = r.k_region AND IT.k_pedido = pe.k_pedido "
-        sql3 = "GROUP BY R.n_nombre_region"
-        for name, sum in conexion.sentenciaCompuesta(sql1 + sql2 + sql3):
-            RESPONSE_BODY["regions"] += {"name": name, "ventasT": sum},
+        for region, sum in conexion.sentenciaFuncion("FU_REGIONAL_MAS_VENTAS"):
+            RESPONSE_BODY["stadistics"] += {"region": region, "V_Total": sum},
         return RESPONSE_BODY
     except error:
-        print(error)
+        RESPONSE_BODY["error"] = error
+        return RESPONSE_BODY
+
+def getBestSellingProductsByRegion():
+    RESPONSE_BODY["stadistics"] = []
+    conexion = connect()
+    try:
+        for region, product, cantidad in conexion.sentenciaFuncion("FU_PROD_MAS_VENDIDO"):
+            RESPONSE_BODY["stadistics"] += {"region": region, "product": product, "quantity": cantidad},
+        return RESPONSE_BODY
+    except error:
+        RESPONSE_BODY["error"] = error
+        return RESPONSE_BODY 
+
+def getDataFromClientAndRepresentant(id_user):
+    RESPONSE_BODY["cli_repre"] = []
+    conexion = connect()
+    try:
+        for tipoid, identificacion, nombre, apellido, correo, direccion, telefono, ciudad, nombre_rep, apellido_rep in conexion.sentenciaFuncionParam("FU_DATOS_CLI_REP", [21111, 0, "null"]):
+            RESPONSE_BODY["cli_repre"] += {"tipoid": tipoid, "id": identificacion, "name": nombre, "last_name": apellido, "email": correo, 
+            "address": direccion, "phone": telefono, "city": ciudad, "rep_name": nombre_rep, "last_name_rep": apellido_rep},
+        return RESPONSE_BODY
+    except error:
+        RESPONSE_BODY["error"] = error
+        return RESPONSE_BODY
+
 
 def vaciar_RESPONSE():
     global RESPONSE_BODY
@@ -210,13 +233,3 @@ return render_template('shopcart2.html',categoria_1=categoria_1,longitud_1=longi
 else:
 return render_template('shopcart.html',categoria=categoria,longitud=longitud)
 '''
-
-def getSalesByAllRegionsError():
-    conexion = connect()
-    try:
-        for region, name, desc, sum in conexion.sentenciaFuncion():
-            RESPONSE_BODY["products"] += {"region": region, "name": name, "Desc": desc, "Cant": sum},
-        return RESPONSE_BODY
-    except error:
-        RESPONSE_BODY["error"] = error
-        return RESPONSE_BODY

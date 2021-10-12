@@ -15,7 +15,6 @@ class connect():
         except Exception as err:
             print("Error connecting: cx_Oracle.init_oracle_client()")
             print(err)
-
         try:
             self.conexion = cx_Oracle.connect(user, passw, host+"/"+tsname)
         except Exception as error:
@@ -40,17 +39,25 @@ class connect():
         cursor.execute(sentencia)
         cursor.close()
 
-    def sentenciaPreparada(self, sentencia, datos):
-        cursor = self.conexion.cursor()
-        cursor.execute(sentencia,(datos,))
-        salida = cursor.fetchall()
-        cursor.close()
-        return salida
+    # def sentenciaPreparada(self, sentencia, datos):
+    #     cursor = self.conexion.cursor()
+    #     cursor.execute(sentencia,(datos,))
+    #     salida = cursor.fetchall()
+    #     cursor.close()
+    #     return salida
 
-    def sentenciaFuncion(self):
+    def sentenciaFuncion(self, funcion):
         cursor = self.conexion.cursor()
         myvar = cursor.var(cx_Oracle.CURSOR)
-        cursor.callfunc("FU_PROD_MAS_VENDIDO", myvar, [0, "null"])              
+        cursor.callfunc(funcion, myvar, [0, "null"])              
+        datos = myvar.getvalue().fetchall()
+        cursor.close()
+        return datos
+
+    def sentenciaFuncionParam(self, funcion, params):
+        cursor = self.conexion.cursor()
+        myvar = cursor.var(cx_Oracle.CURSOR)
+        cursor.callfunc(funcion, myvar, params)              
         datos = myvar.getvalue().fetchall()
         cursor.close()
         return datos

@@ -112,11 +112,9 @@
 					<div class="col-lg-4 promo_col">
 						<div class="promo_item">
 							<div class="promo_image">
-								<img src="../static/images/promo_1.jpg" alt="">
-								<div class="promo_content promo_content_1">		
-								</div>
+								<img src="../static/images/clients.png" alt="">
 							</div>
-							<div class="promo_link"><a href="#">Mis Clientes</a></div>
+							<div class="promo_link"><a href="../user/view_my_clients">Mis Clientes</a></div>
 						</div>
 					</div>
 
@@ -124,12 +122,9 @@
 					<div class="col-lg-4 promo_col">
 						<div class="promo_item">
 							<div class="promo_image">
-								<img src="../static/images/promo_2.jpg" alt="">
-								<div class="promo_content promo_content_2">
-									
-								</div>
+								<img src="../static/images/Representante.jpg" alt="">
 							</div>
-							<div class="promo_link"><a href="#">Representantes</a></div>
+							<div class="promo_link"><a href="../user/view_my_representants">Representantes</a></div>
 						</div>
 					</div>
 
@@ -137,10 +132,7 @@
 					<div class="col-lg-4 promo_col">
 						<div class="promo_item">
 							<div class="promo_image">
-								<img src="../static/images/promo_3.jpg" alt="">
-								<div class="promo_content promo_content_3">
-								
-								</div>
+								<img src="../static/images/Analytics.jpg" alt="">
 							</div>
 							<div class="promo_link"><a href="/stadistics">Estadisticas</a></div>
 						</div>
@@ -152,7 +144,7 @@
 
 		<!-- New Arrivals -->
 
-		<div class="arrivals">
+		<!-- <div class="arrivals">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -162,14 +154,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="row products_container">
+				<div class="row products_container"> -->
 
 					<!-- Product -->
-					<div class="col-lg-4 product_col">
+					<!-- <div class="col-lg-4 product_col">
 						<div class="product">
 							<div class="product_image">
 								<img src="../static/images/product_1.jpg" alt="">
-							</div>
+							</div> -->
 							<!-- <div class="rating rating_4">
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
@@ -177,25 +169,25 @@
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
 							</div> -->
-							<div class="product_content clearfix">
+							<!-- <div class="product_content clearfix">
 								<div class="product_info">
 									<div class="product_name"><a href="../product">Porta Escobas</a></div>
 									<div class="product_price">$15.000</div>
 								</div>
 								<div class="product_options">
-									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div> -->
 									<!-- <div class="product_fav product_option">+</div> -->
-								</div>
+								<!-- </div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					<!-- Product -->
-					<div class="col-lg-4 product_col">
+					<!-- <div class="col-lg-4 product_col">
 						<div class="product">
 							<div class="product_image">
 								<img src="../static/images/product_2.jpg" alt="">
-							</div>
+							</div> -->
 							<!-- <div class="rating rating_4">
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
@@ -203,25 +195,25 @@
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
 							</div> -->
-							<div class="product_content clearfix">
+							<!-- <div class="product_content clearfix">
 								<div class="product_info">
 									<div class="product_name"><a href="../product">Desinfectante antiséptico</a></div>
 									<div class="product_price">$28.000</div>
 								</div>
 								<div class="product_options">
-									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div> -->
 									<!-- <div class="product_fav product_option">+</div> -->
-								</div>
+								<!-- </div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					<!-- Product -->
-					<div class="col-lg-4 product_col">
+					<!-- <div class="col-lg-4 product_col">
 						<div class="product">
 							<div class="product_image">
 								<img src="../static/images/product_3.jpg" alt="">
-							</div>
+							</div> -->
 							<!-- <div class="rating rating_4">
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
@@ -229,22 +221,34 @@
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star"></i>
 							</div> -->
-							<div class="product_content clearfix">
+							<!-- <div class="product_content clearfix">
 								<div class="product_info">
 									<div class="product_name"><a href="../static/product.html">Dog Chow</a></div>
 									<div class="product_price">$50.000</div>
 								</div>
 								<div class="product_options">
-									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div>
+									<div class="product_buy product_option"><img src="../static/images/shopping-bag-white.svg" alt=""></div> -->
 									<!-- <div class="product_fav product_option">+</div> -->
-								</div>
+								<!-- </div>
 							</div>
 						</div>
 					</div>
 
 				</div>
 			</div>
+		</div> -->
+
+		<div class="text" style="visibility: hidden">
+			<p id="info_region">{{info.region}}</p>
 		</div>
+
+		<script>
+			var region = document.getElementById('info_region').textContent;
+			console.log("Region " + region);
+			document.getElementById('name_region').innerHTML = ('Region ' + region);
+			document.getElementById('ref_natame').href = ("../home/" + region);
+		</script>
+
 		{% endblock %}
 
 	{% block jscripst %}
